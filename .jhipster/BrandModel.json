@@ -1,0 +1,38 @@
+{
+    "name": "BrandModel",
+    "fields": [
+        {
+            "fieldName": "code",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "year",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "brand",
+            "otherEntityName": "brand",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "brandModel"
+        }
+    ],
+    "changelogDate": "20181210174715",
+    "entityTableName": "brand_model",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

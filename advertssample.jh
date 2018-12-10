@@ -1,0 +1,37 @@
+entity Advert {
+	description String
+    status AdvertStatus    
+}
+
+enum AdvertStatus {
+    DRAW, PUBLISHED, PENDING, SOLD
+}
+
+entity Brand {
+	code String required
+    name String
+    logoUrl String
+}
+
+entity BrandModel {
+	code String required
+    name String
+    year Integer
+}
+
+relationship OneToOne {
+	Advert{model} to BrandModel
+}
+
+relationship OneToOne {
+	Brand to BrandModel
+}
+
+entity Owner {
+	name String
+}
+
+relationship OneToMany {
+	Owner{owner} to Advert
+}
+
