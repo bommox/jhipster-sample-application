@@ -1,0 +1,52 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-advert-heading">Create or edit a Advert</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!advert.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="advert.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_description">Description</label>
+                    <input type="text" class="form-control" name="description" id="field_description"
+                        [(ngModel)]="advert.description" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_status">Status</label>
+                    <select class="form-control" name="status" [(ngModel)]="advert.status" id="field_status" >
+                        <option value="DRAW">DRAW</option>
+                        <option value="PUBLISHED">PUBLISHED</option>
+                        <option value="PENDING">PENDING</option>
+                        <option value="SOLD">SOLD</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_model">Model</label>
+                    <select class="form-control" id="field_model" name="model" [(ngModel)]="advert.model">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="brandModelOption.id === advert.model?.id ? advert.model : brandModelOption" *ngFor="let brandModelOption of models; trackBy: trackBrandModelById">{{brandModelOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_owner">Owner</label>
+                    <select class="form-control" id="field_owner" name="owner" [(ngModel)]="advert.owner" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="ownerOption.id === advert.owner?.id ? advert.owner : ownerOption" *ngFor="let ownerOption of owners; trackBy: trackOwnerById">{{ownerOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

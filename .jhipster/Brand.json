@@ -1,0 +1,39 @@
+{
+    "name": "Brand",
+    "fields": [
+        {
+            "fieldName": "code",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "logoUrl",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "brandModel",
+            "otherEntityName": "brandModel",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "brand"
+        }
+    ],
+    "changelogDate": "20181210174714",
+    "entityTableName": "brand",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

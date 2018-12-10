@@ -1,0 +1,39 @@
+{
+    "name": "Advert",
+    "fields": [
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "AdvertStatus",
+            "fieldValues": "DRAW,PUBLISHED,PENDING,SOLD"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "model",
+            "otherEntityName": "brandModel",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "advert"
+        },
+        {
+            "relationshipName": "owner",
+            "otherEntityName": "owner",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20181210174713",
+    "entityTableName": "advert",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

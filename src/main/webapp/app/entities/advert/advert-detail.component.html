@@ -1,0 +1,43 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="advert">
+            <h2><span>Advert</span> {{advert.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Description</span></dt>
+                <dd>
+                    <span>{{advert.description}}</span>
+                </dd>
+                <dt><span>Status</span></dt>
+                <dd>
+                    <span>{{advert.status}}</span>
+                </dd>
+                <dt><span>Model</span></dt>
+                <dd>
+                    <div *ngIf="advert.model">
+                        <a [routerLink]="['/brand-model', advert.model?.id, 'view']">{{advert.model?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Owner</span></dt>
+                <dd>
+                    <div *ngIf="advert.owner">
+                        <a [routerLink]="['/owner', advert.owner?.id, 'view']">{{advert.owner?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/advert', advert.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

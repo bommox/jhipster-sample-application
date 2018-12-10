@@ -1,0 +1,68 @@
+<div>
+    <h2 id="page-heading">
+        <span>Adverts</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-advert" [routerLink]="['/advert/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Advert
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="adverts">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Description</span></th>
+            <th><span>Status</span></th>
+            <th><span>Model</span></th>
+            <th><span>Owner</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let advert of adverts ;trackBy: trackId">
+                <td><a [routerLink]="['/advert', advert.id, 'view' ]">{{advert.id}}</a></td>
+                <td>{{advert.description}}</td>
+                <td>{{advert.status}}</td>
+                <td>
+                    <div *ngIf="advert.model">
+                        <a [routerLink]="['../brand-model', advert.model?.id, 'view' ]" >{{advert.model?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="advert.owner">
+                        <a [routerLink]="['../owner', advert.owner?.id, 'view' ]" >{{advert.owner?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/advert', advert.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/advert', advert.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'advert/'+ advert.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
